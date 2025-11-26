@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="signup-container">
+   <img src ="/static/images/Elixire_logo.png" >
+  <h2>Create Account</h2>
+
+  <form method = "POST" action = "{% url 'signup' %}">
+    {% csrf_token %}
+    
+    {% if error %}
+          <div class="alert alert-danger" role="alert" >
+                Please enter value                                
+          </div>
+    {% endif %}
+
+    {% if user_exits_error %}
+          <div class="alert alert-danger" role="alert" >
+                User name is Already Exits !                                
+          </div>
+    {% endif %}
+    <div class="input-group">
+      <label>Full Name</label>
+      <input type="text" name = "signup_name" placeholder="Enter your full name" required pattern="^[A-Z][a-z]{2,19}$" title="please enter valid name e.g: priya , rahul">
+    </div>
+    {% if email_exits_error %}
+          <div class="alert alert-danger" role="alert" >
+                Email is Already Exits !                          
+          </div>
+    {% endif %}
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" name = "signup_email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" name = "signup_password" maxlength="8" placeholder="Create password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+       title="Password must be at least 8 characters, include uppercase, lowercase, number & special character">
+    </div>
+    {% if password_not_match_error %}
+          <div class="alert alert-danger" role="alert" >
+                Your Password not Match !                        
+          </div>
+    {% endif %}
+
+    <div class="input-group">
+      <label>Confirm Password</label>
+      <input type="password" maxlength="8" name = "signup_confirm_password" placeholder="Re-enter password" required>
+    </div>
+
+    <button type="submit" class="signup-btn">Sign Up</button>
+
+    <p class="login-text">Already have an account? <a href="#">Login</a></p>
+
+  </form>
+</div>
+
+</body>
+</html>
