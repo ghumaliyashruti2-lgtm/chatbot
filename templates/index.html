@@ -7,12 +7,12 @@
 <title>ElixirTechne Support Chat</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
 <div class="chat-container">
-
   <div class="chat-header">
     <i class="fa-solid fa-arrow-left"></i> Chat Support
   </div>
@@ -22,13 +22,13 @@
     <div class="message bot">How can we help you today?</div>
 
     <div class="quick-buttons">
-      <button onclick="sendQuick('Courses details')">Courses details</button>
-      <button onclick="sendQuick('Fees structure')">Fees structure</button>
-      <button onclick="sendQuick('Duration of courses')">Duration of courses</button>
-      <button onclick="sendQuick('Location and contact')">Location and contact</button>
-      <button onclick="sendQuick('Job support / placement')">Job support / placement</button>
-      <button onclick="sendQuick('I have other questions')">I have other questions</button>
-    </div>
+      <button onclick="sendQuick('Courses details', this)">Courses details</button>
+      <button onclick="sendQuick('Fees structure', this)">Fees structure</button>
+      <button onclick="sendQuick('Duration of courses', this)">Duration of courses</button>
+      <button onclick="sendQuick('Location and contact', this)">Location and contact</button>
+      <button onclick="sendQuick('Job support / placement', this)">Job support / placement</button>
+      <button onclick="sendQuick('I have other questions', this)">I have other questions</button>
+</div>
 
   </div>
 

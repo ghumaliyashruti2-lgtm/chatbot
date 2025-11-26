@@ -83,7 +83,7 @@ def login(request):
             return render(request, "index.html")
 
     if request.session.get("user_id"):
-        return render(request, "login.html", {"already_login": True})
+        return render(request, "index.html", {"already_login": True})
     
     return render(request, "login.html")
 
