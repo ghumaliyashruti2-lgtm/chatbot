@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Profile</title>
+
+    <!-- Link external CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon-container">
+    <img class="profile-img"
+         src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'default/user_img.png' %}{% endif %}"
+         alt="Profile">
+</div>
+
+        <h3>Click on delete for delete your profile</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete</button>
+        </form>
+
+
+        <div class="buttons-row">
+            <button type="submit" class="save-btn"><a href = "{% url 'my-profile' %}" >Save</a></button>
+            <button type="submit" class="save-btn"><a href = "{% url 'my-profile' %}" >Cancel</a></button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f6f6;
+}
+
+.chat-container {
+  max-width: 745px;
+  height: 100vh;
+  background: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  background: #4BA3DE;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* LEFT + RIGHT */
+}
+
+/* LEFT SIDE: Arrow + Chat Support */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;   /* space between arrow + text */
+}
+
+/* RIGHT SIDE: Logout + Profile buttons */
+.right-section {
+  display: flex;
+  gap: 12px;   /* space between the two buttons */
+}
+
+/* logout + profile buttons */
+.logout-btn {
+    background: white;
+    color: #0062ad;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #0062ad;
+    color: white;
+}
+
+
+/* body */
+
+
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.message {
+  background: #eee;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #ededed;
+}
+
+.quick-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.quick-buttons button {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #4BA3DE;
+  background: white;
+  color: #4BA3DE;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quick-buttons button:hover {
+  background: #e6f2ff;
+}
+
+.user-message {
+  background: #0062ad;
+  color: white;
+  align-self: flex-end;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background: white;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #4BA3DE;
+  font-size: 16px;
+}
+
+.chat-footer button {
+  padding: 12px 18px;
+  background: #4BA3DE;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.chat-footer button:hover {
+  background: #4BA3DE;
+}
+
+.bot-button {
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid #4BA3DE;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4BA3DE;
+  background: #fff;
+}
+
+.smart-option-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #4BA3DE;
+  background: white;
+  color: #4BA3DE;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.smart-option-btn:hover {
+  background: #e6f2ff;
+}
+
+.bot-message {
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  color: #4BA3DE;
+  border: 1px solid #4BA3DE;
+}
+
+/* SAME STYLE FOR ALL BUTTONS */
+.quick-btn,
+.course-item {
+  width: 100%;
+  padding: 18px;
+  margin: 10px 0;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  border: 2px solid #4BA3DE;
+  border-radius: 20px;
+  background: white;
+  color: #4BA3DE;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* When button is active */
+.active-btn {
+  background: #4BA3DE !important;
+  color: white !important;
+}
+
+/* Optional hover */
+.quick-btn:hover,
+.course-item:hover {
+  background: #eaf4ff;
+}
+
+
+
+
+/* login page style */
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f7ff;
+}
+
+.login-container {
+  width: 350px;
+  margin: 70px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 25px;
+  color: #0062ad;
+  font-size: 28px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 15px;
+  color: #333;
+}
+
+.input-group input {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border: 2px solid #4BA3DE;
+  border-radius: 8px;
+  margin-top: 6px;
+  outline: none;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  border-color: #4BA3DE;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0062ad;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background: #4BA3DE;
+}
+
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #0062ad;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* signup design */
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f7ff;
+}
+
+.signup-container {
+  width: 350px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.signup-container h2 {
+  margin-bottom: 25px;
+  color: #0062ad;
+  font-size: 28px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 15px;
+  color: #333;
+}
+
+.input-group input {
+  width: 90%;
+  padding: 12px;
+  border: 2px solid #4BA3DE;
+  border-radius: 8px;
+  margin-top: 6px;
+  outline: none;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  border-color: #4BA3DE;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0062ad;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-btn:hover {
+  background: #4BA3DE;
+}
+
+.login-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #0062ad;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* profile page design */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+}
+
+/* Top color header */
+.profile-header {
+    width: 100%;
+    height: 180px;
+    background: #4BA3DE;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+/* White card */
+.profile-card {
+    max-width: 400px;
+    margin: -70px auto 0;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 20px 40px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Profile picture */
+.profile-img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    margin-top: -60px;
+}
+
+/* Username */
+.username {
+    font-size: 22px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Info section */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Settings list section */
+.settings-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.settings-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* control gap between icon and text */
+}
+
+.settings-item i {
+    font-size: 20px;
+    margin: 0;
+}
+
+.settings-item span {
+    color: #333;
+    margin: 0;
+}
+
+.settings-item .arrow {
+    font-size: 14px;
+}
+
+
+
+/* Logout */
+.logout span a {
+    background: #0062ad;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 0px;
+}
+
+/* my-profile page design */
+
+body {
+            background: #f5f5f5;
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .profile-header-bg {
+            height: 120px;
+            background: linear-gradient(to right, #acd6ff, #ffe9c9);
+            border-radius: 12px 12px 0 0;
+        }
+
+        
+        .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .profile-top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            margin-top: -60px;
+        }
+
+        .profile-user {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .profile-user img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .delete-btn {
+            background: #3b82f6;
+            padding: 10px 22px;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        
+        label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e6e6e6;
+            background: #f7f7f7;
+            margin-top: 5px;
+        }
+
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            padding: 0 30px 30px;
+        }
+
+
+/* delete and delete profile button */
+
+.circle-btn {
+    width: 40px;
+    height: 40px;
+    background: #4BA3DE; /* dark blue circle */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 22px;
+}
+
+.circle-btn p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #000; /* label black */
+    text-align: center;
+}
+
+.circle-btn:hover {
+    background: #0062ad;
+    transform: scale(1.05);
+}
+
+
+.setting-save-btn {
+    display: flex;
+    gap: 12px; 
+}
+
+    
+.save-btn{ 
+    background: #4BA3DE;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border-color: white;
+    box-shadow : none;
+    border-bottom: none;
+    border-right: none;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto;
+}
+

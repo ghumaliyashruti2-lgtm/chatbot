@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+  {% block content %}
+    <body>
+      <div class="chat-container">
+          <div class="chat-header">
+              <div class="left-section">
+                <i class="fa-solid fa-arrow-right"></i> 
+                <span>Elixir Techne Help Desk</span>
+              </div>
+              <div class="right-section">
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+                <a href="{% url 'profile' %}" class="logout-btn">Profile</a>
+              </div>
+          </div>
+
+
+          <div class="chat-body" id="chatBody">
+            <div class="message bot">Hi! Welcome to ElixirTechne 👋</div>
+            <div class="message bot">How can we help you today?</div>
+
+            <div class="quick-buttons">
+              <button onclick="sendQuick('Courses details', this)">Courses details</button>
+              <button onclick="sendQuick('Fees structure', this)">Fees structure</button>
+              <button onclick="sendQuick('Duration of courses', this)">Duration of courses</button>
+              <button onclick="sendQuick('Location and contact', this)">Location and contact</button>
+              <button onclick="sendQuick('Job support / placement', this)">Job support / placement</button>
+              <button onclick="sendQuick('I have other questions', this)">I have other questions</button>
+            </div>
+
+          </div>
+
+          <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+          </div>
+      </div>
+    </body>
+  {% endblock %} 
+

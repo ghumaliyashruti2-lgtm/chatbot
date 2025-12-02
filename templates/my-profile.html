@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="profile-container">
+
+    <!-- Gradient Banner -->
+    <div class="profile-header-bg"></div>
+
+    <!-- User Info -->
+    <div class="profile-top-section">
+        <div class="profile-user">
+           <img class="profile-img"
+     src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'images/user_img.png' %}{% endif %}"
+     alt="Profile">
+
+            <div>
+                <h3 style="margin-top:30px;">{{ user.get_full_name|default:user.username }}</h3>
+                <p style="margin-top:-10px; color:#777;">{{ user.email }}</p>
+            </div>
+            
+        </div>
+        <div style="display: flex; gap: 20px; margin-top: 30px;">
+    
+            <div class="circle-btn" >
+                <a href = "{% url 'edit-profile' %}" style="text-decoration: none; color:white;"><i class="fas fa-pen"> </i></a>
+            </div>
+            <div class="circle-btn" >
+                <a href = "{% url 'delete-profile' %}" style="text-decoration: none; color:white;"><i class="fas fa-trash"> </i></a>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Form Section -->
+    <form method="POST">
+    {% csrf_token %}
+
+    <div class="form-grid">
+
+        <div>
+            <label>Username</label>
+            <input type="text" name="full_name" value="{{ user.username }}">
+        </div>
+        
+        <div>
+            <label>Email</label>
+            <input type="text" name="nickname" value="{{ user.email }}">
+        </div>
+
+        <div>
+            <label>Gender</label>
+            <select name="gender">
+                <option value="">Select Gender</option>
+                <option value="Female" {% if profile.gender == "Female" %}selected{% endif %}>Female</option>
+                <option value="Male" {% if profile.gender == "Male" %}selected{% endif %}>Male</option>
+                <option value="Other" {% if profile.gender == "Other" %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Mobile</label>
+            <input type="text" name="mobile" id="mobile" 
+                   value="{{ profile.mobile }}" 
+                   maxlength="10"
+                   placeholder="Enter your mobile number">
+        </div>
+
+    </div>
+
+    <div class="setting-save-btn">
+        <button type="submit" class="save-btn">Save</button>
+    </div>
+</form>
+
+    
+
+</div>
+
+{% endblock %}

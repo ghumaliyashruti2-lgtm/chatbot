@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+  {% block content %}
+  {% load static %}
+    <body>
+        <div class="profile-header">
+        </div>
+        <div class="profile-card">
+
+            <div class="profile-img">
+                <img class="profile-img"
+     src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'images/user_img.png' %}{% endif %}"
+     alt="Profile">
+
+            </div>
+
+            <div class="info-row">
+                <span>Username</span>
+                <strong>{{ request.user.username}}</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Phone</span>
+                <strong>{{ profile.mobile|default:"Not added" }}</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Email</span>
+                <strong>{{ request.user.email }}</strong>
+            </div>
+
+            <hr>
+
+            
+
+            <div class="settings-item">
+                <div class="settings-left">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Profile details</span>
+                </div>
+                <a href="{% url 'my-profile' %}" style= "color:black"><i class="fa-solid fa-chevron-right arrow"></i></a>
+            </div>
+
+            
+            <div class="settings-item logout">
+                <span><a href="{% url 'index' %}">Back</a></span>
+                <span><a href="{% url 'logout' %}">Log out</a></span>
+            </div>
+            
+        </div>
+    </body>
+   {% endblock %} 
+
