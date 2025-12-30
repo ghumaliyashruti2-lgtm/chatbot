@@ -5,11 +5,18 @@ from django.contrib.auth.models import User
 @admin.register(History)
 class HistoryAdmin(admin.ModelAdmin):
     # Use the method names (strings) in list_display
-    list_display = ('id', 'user', 'short_user_msg', 'short_ai_msg', 'created_at')
+    list_display = ('username', 'id', 'short_user_msg', 'short_ai_msg', 'created_at')
     list_filter = ('user', 'created_at')
     search_fields = ('user__username', 'user_message', 'ai_message')
 
     # Django >= 3.2 / 4.x / 5.x: use @admin.display for nicer metadata
+    
+    @admin.display(description='USERNAME')
+    def username(self, obj):
+        # choose what you want to show
+        return obj.user.username 
+
+    
     @admin.display(description='User message')
     def short_user_msg(self, obj):
         # return truncated text (change length as you want)

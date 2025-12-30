@@ -25,16 +25,22 @@ def signup(request):
         if password != confirm_password:
             return render(request, "base/signup.html", {"password_not_match_error": True})
 
-        if User.objects.filter(username=name).exists():
+        if User.objects.filter(username=email).exists():
             return render(request, "base/signup.html", {"user_exits_error": "Username already exists!"})
 
         if User.objects.filter(email=email).exists():
             return render(request, "base/signup.html", {"email_exits_error": "Email already exists!"})
-
+        
+        parts = name.strip().split()
+        first_name = parts[0]
+        last_name = " ".join(parts[1:]) if len(parts) > 1 else ""
+        
         user = User.objects.create_user(
-            username=name,
+            username=email,
             email=email,
-            password=password
+            password=password,
+            first_name=first_name,
+            last_name=last_name
         )
         user.is_staff = True
         user.save()
@@ -60,7 +66,7 @@ def login(request):
 
         user = authenticate(
             request,
-            username=user_obj.username,
+            username=user_obj.email,
             password=password
         )
 

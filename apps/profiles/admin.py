@@ -18,6 +18,9 @@ class CustomUserAdmin(UserAdmin):
     # Add Profile fields in User list
     list_display = (
         "username",
+        "id",
+        "first_name",
+        "last_name",
         "email",
         "get_mobile",
         "get_gender",

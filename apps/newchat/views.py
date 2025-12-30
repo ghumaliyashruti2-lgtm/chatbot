@@ -20,10 +20,6 @@ chatbot_engine = OpenRouterChatbot()
 DAILY_CHAT_LIMIT = 10
 
 
-chatbot_engine = OpenRouterChatbot()  # ✅ renamed
-
-DAILY_CHAT_LIMIT = 10
-
 @login_required(login_url='login')
 def new_chatbot(request):
 
