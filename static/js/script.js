@@ -43,7 +43,7 @@ function setChatStartTime() {
 function isChatExpired() {
     const start = localStorage.getItem("chatStartTime");
     if (!start) return true;
-    return (Date.now() - start) / (1000 * 60 * 60) >= CHAT_LIMIT_HOURS;
+    return (Date.now() - start) / (1000 * 60 * 60 ) >= CHAT_LIMIT_HOURS;
 }
 
 function resetChatLimit() {
@@ -91,9 +91,10 @@ if (seconds > 0) {
 
         const h = Math.floor(seconds / 3600);
         const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60
 
         if (el) {
-            el.textContent = `${h}h ${m}m remaining`;
+            el.textContent = `${h}h ${m}m  ${s}s remaining`;
         }
 
         seconds--;
@@ -178,6 +179,7 @@ async function sendMessage(e) {
     ====================== */
     const formData = new FormData();
     formData.append("message", message);
+    formData.append("chat_id", window.CHAT_ID);
 
     if (selectedFile) {
         formData.append("file", selectedFile);
