@@ -107,13 +107,16 @@ async function sendMessage(e) {
             <div class="message user">
                 <div class="message-content">
                     ${message || "📎 " + selectedFile.name}
+                    <div class="message-actions">
+                        <i class="fa fa-edit edit-btn"></i>
+                        <i class="fa fa-copy copy-btn"></i>
+                    </div>
                 </div>
             </div>
         </div>
     `);
 
     autoScroll();
-    autoScroll(); // 👈 ensure user msg visible first
 
     // ======================
     // THEN SHOW TYPING DOTS
@@ -154,11 +157,14 @@ async function sendMessage(e) {
                 <div class="message bot">
                     <div class="message-content">
                         ${data.reply.replace(/\n/g, "<br>")}
+                        <div class="message-actions">
+                            <i class="fa fa-copy copy-btn"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         `);
-
+            
         autoScroll();
 
     } catch (err) {
@@ -185,6 +191,48 @@ function uploadFile() {
     selectedFile = fileInput.files[0];
     userInput.value = `📎 ${selectedFile.name}`;
 }
+
+
+// ======================
+// EMOJI ATTACH 
+// ======================
+
+
+let emojiPickerLoaded = false;
+
+function toggleEmojiPicker() {
+    const pickerDiv = document.getElementById("emojiPicker");
+
+    if (!emojiPickerLoaded) {
+        const picker = new window.EmojiMart.Picker({
+            onEmojiSelect: (emoji) => {
+                document.getElementById("userInput").value += emoji.native;
+                
+            }
+        });
+
+        pickerDiv.appendChild(picker);
+        emojiPickerLoaded = true;
+    }
+
+    pickerDiv.style.display =
+        pickerDiv.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const emojiBtn = document.getElementById("emojiBtn");
+    const picker = document.getElementById("emojiPicker");
+
+    if (!emojiBtn || !picker) return;
+
+    emojiBtn.addEventListener("click", e => e.stopPropagation());
+    picker.addEventListener("click", e => e.stopPropagation());
+
+    document.addEventListener("click", () => {
+        picker.style.display = "none";
+    });
+});
+
 
 
 // ======================
@@ -242,6 +290,14 @@ function previewImage(event) {
     if (!img) return;
     img.src = URL.createObjectURL(event.target.files[0]);
 }
+
+// ======================
+// PAGE LOAD
+// ======================
+document.addEventListener("DOMContentLoaded", () => {
+    autoScroll();
+    if (!localStorage.getItem("chatStartTime")) setChatStartTime();
+});
 
 
 
@@ -322,13 +378,6 @@ function toggleSubmenu(e) {
     document.getElementById("submenu")?.classList.toggle("show");
 }
 
-// ======================
-// PAGE LOAD
-// ======================
-document.addEventListener("DOMContentLoaded", () => {
-    autoScroll();
-    if (!localStorage.getItem("chatStartTime")) setChatStartTime();
-});
 
 
 // ======================
