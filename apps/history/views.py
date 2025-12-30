@@ -32,20 +32,21 @@ def view_history(request):
     history_groups = []
 
     # ==========================
-    # SPLIT EACH CHAT INTO 10-MESSAGE GROUPS
+    # ONE ENTRY PER CHAT (FIXED)
     # ==========================
+    history_groups = []
+
     for chat_id, msgs in chat_groups.items():
+        first_msg = msgs[0]
 
-        for i in range(0, len(msgs), 10):
-            chunk = msgs[i:i + 10]
+        history_groups.append({
+            "chat_id": chat_id,
+            "start_time": first_msg.created_at,
+            "preview": first_msg.user_message[:60],
+            "count": len(msgs),
+            "from_time": first_msg.created_at.isoformat(),
+        })
 
-            history_groups.append({
-                "chat_id": chat_id,
-                "start_time": chunk[0].created_at,
-                "preview": chunk[0].user_message[:60],
-                "count": len(chunk),
-                "from_time": chunk[0].created_at.isoformat(),
-            })
 
     # ==========================
     # SORT GROUPS
