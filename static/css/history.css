@@ -16,12 +16,26 @@ body {
    
     
 }
+.chat-inner-card.history-card {
+    position: relative;
+    z-index: 10;
+}
+
+.chat-main,
+.content-area,
+.history-card {
+    overflow: visible !important;
+}
+
 
 /* ================= TOP BAR ================= */
 .top-bar {
     display: flex;
     align-items: center;
     gap: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 
@@ -82,7 +96,7 @@ body {
 
 /* ================= DOT MENU ================= */
 .dots-container {
-    position: relative;
+    position:relative;
 }
 
 .dots {
@@ -97,7 +111,7 @@ body {
 }
 
 .dots-menu {
-    position: absolute;
+    position: fixed;
     top: 40px;
     right: 0;
     width: 150px;
