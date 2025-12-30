@@ -139,16 +139,26 @@ async function sendMessage(e) {
     if (!input || !sendBtn || !chatBody) return;
 
     const message = input.value.trim();
-    if (!message) return;
+
+    // ✅ Allow file-only send
+    if (!message && !selectedFile) return;
 
     isProcessing = true;
     input.disabled = true;
     sendBtn.style.opacity = "0.6";
 
+    /* ======================
+       SHOW USER MESSAGE
+    ====================== */
+    let displayText = message;
+    if (!message && selectedFile) {
+        displayText = `📎 ${selectedFile.name}`;
+    }
+
     chatBody.insertAdjacentHTML("beforeend", `
         <div class="chat-message user-message">
             <div class="message user">
-                <div class="message-content">${message}</div>
+                <div class="message-content">${displayText}</div>
                 <div class="message-actions">
                     <i class="fa fa-copy copy-btn"></i>
                 </div>
@@ -156,7 +166,6 @@ async function sendMessage(e) {
         </div>
     `);
 
-    input.value = "";
     autoScroll();
 
     if (typing) {
@@ -164,15 +173,24 @@ async function sendMessage(e) {
         chatBody.appendChild(typing);
     }
 
+    /* ======================
+       FORM DATA (IMPORTANT)
+    ====================== */
+    const formData = new FormData();
+    formData.append("message", message);
+
+    if (selectedFile) {
+        formData.append("file", selectedFile);
+    }
+
     try {
         const res = await fetch("/chatbot/chatbot/", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "X-CSRFToken": getCookie("csrftoken"),
                 "X-Requested-With": "XMLHttpRequest"
             },
-            body: JSON.stringify({ message })
+            body: formData
         });
 
         if (typing) typing.style.display = "none";
@@ -184,13 +202,11 @@ async function sendMessage(e) {
             return;
         }
 
-        if (!res.ok) {
-            throw new Error("Server error");
-        }
+        if (!res.ok) throw new Error("Server error");
 
         const data = await res.json();
 
-        incrementMessageCount(); // ✅ ONLY here
+        incrementMessageCount(); // ✅ keep as-is
 
         chatBody.insertAdjacentHTML("beforeend", `
             <div class="chat-message bot-message">
@@ -204,14 +220,22 @@ async function sendMessage(e) {
         `);
 
         autoScroll();
+
     } catch (err) {
         console.error(err);
     }
 
+    /* ======================
+       RESET STATE
+    ====================== */
     isProcessing = false;
     input.disabled = false;
     sendBtn.style.opacity = "1";
+    input.value = "";
     input.focus();
+
+    selectedFile = null;
+    document.getElementById("fileInput").value = "";
 }
 
 
@@ -278,6 +302,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+// ======================
+// FILE UPLOAD
+// ======================
+
+let selectedFile = null;
+
+function uploadFile() {
+    const fileInput = document.getElementById("fileInput");
+    const userInput = document.getElementById("userInput");
+
+    if (!fileInput || !fileInput.files.length) return;
+
+    selectedFile = fileInput.files[0];
+
+    // ✅ Show selected file name in input field
+    userInput.value = `📎 ${selectedFile.name}`;
+    userInput.setAttribute("data-has-file", "true");
+}
 
 // ======================
 // MOBILE NAV
