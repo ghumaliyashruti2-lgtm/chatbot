@@ -1,15 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from apps.history.models import History
-from apps.newchat.models import NewChat
-from datetime import timedelta
 import json
 from django.http import JsonResponse
-from django.utils.timezone import localdate
-from django.shortcuts import get_object_or_404
 from apps.profiles.models import Profile
 from collections import defaultdict
-    
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .forms import CleanHistoryForm, DeleteHistoryForm
 
 @login_required(login_url='login')
 def view_history(request):
@@ -64,55 +62,25 @@ def view_history(request):
     })
 
 
-
-@login_required(login_url='login')
+@login_required(login_url="login")
 def clean_history(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        range_type = data.get("range")
-
-        today = localdate()
-
-        print("CLEAN HISTORY CALLED ----")
-        print("RANGE =", range_type)
-
-        if range_type == "day":
-            History.objects.filter(
-                user=request.user,
-                created_at__date=today
-            ).delete()
-
-        elif range_type == "week":
-            week_start = today - timedelta(days=today.weekday())
-            History.objects.filter(
-                user=request.user,
-                created_at__date__gte=week_start
-            ).delete()
-
-        elif range_type == "month":
-            History.objects.filter(
-                user=request.user,
-                created_at__year=today.year,
-                created_at__month=today.month
-            ).delete()
-
-        elif range_type == "all":
-            History.objects.filter(user=request.user).delete()
-
-        return JsonResponse({"status": "success"})
+        form = CleanHistoryForm(request.user, data=data)
+        if form.is_valid():
+            form.clean_history()
+            return JsonResponse({"status": "success"})
+        return JsonResponse({"error": form.errors}, status=400)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 
-
-# delete particular history
 @login_required(login_url='login')
 def delete_history(request, chat_id):
     if request.method == "POST":
-        History.objects.filter(
-            user=request.user,
-            chat_id=chat_id
-        ).delete()
-        return JsonResponse({"ok": True})
-
+        form = DeleteHistoryForm(request.user, {"chat_id": chat_id})
+        if form.is_valid():
+            form.delete_history()
+            return JsonResponse({"ok": True})
+        return JsonResponse({"error": form.errors}, status=400)
     return JsonResponse({"error": "Invalid request"}, status=400)
