@@ -1,0 +1,54 @@
+{% extends "base/base.html" %}
+  {% block content %}
+      {% load static %}
+       <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+            <div class="signup-container">
+                  <img src ="/static/images/Elixire_logo.png" >
+                  <h2>Sign up</h2>
+                  <form method = "POST" action = "{% url 'signup' %}">
+                        {% csrf_token %}    
+                        {% if error %}
+
+                              <div class="form-group alert alert-danger">
+                                    Please enter value
+                              </div>
+                        
+                        {% endif %}
+                        {% if user_exits_error %}
+                              <div class="alert alert-danger" role="alert" >
+                                    User name is Already Exits !                                
+                              </div>
+                        {% endif %}
+                        <div class="input-group">
+                              <label>User Name</label>
+                              <input type="text" name = "signup_name" placeholder="Enter your full name" required pattern="^[a-z_]{2,19}$" title="please enter valid name e.g: priya , rahul">
+                        </div>
+                        {% if email_exits_error %}
+                              <div class="alert alert-danger" role="alert" >
+                                    Email is Already Exits !                          
+                              </div>
+                        {% endif %}
+                        <div class="input-group">
+                              <label>Email</label>
+                              <input type="email" name = "signup_email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="input-group">
+                              <label>Password</label>
+                              <input type="password" name = "signup_password" maxlength="8" placeholder="Create password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                              title="Password must be at least 8 characters, include uppercase, lowercase, number & special character">
+                        </div>
+                        {% if password_not_match_error %}
+                              <div class="alert alert-danger" role="alert" >
+                                    Your Password not Match !                        
+                              </div>
+                        {% endif %}
+                        <div class="input-group">
+                              <label>Confirm Password</label>
+                              <input type="password" maxlength="8" name = "signup_confirm_password" placeholder="Re-enter password" required>
+                        </div>
+                        <button type="submit" class="signup-btn">Sign Up</button>
+                        <p class="login-text">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                  </form>
+            </div>
+      
+  {% endblock %}    

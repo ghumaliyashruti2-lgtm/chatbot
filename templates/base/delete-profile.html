@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+  {% block content %}
+  {% load static %}
+   <link rel="stylesheet" href="{% static 'css/edit_delete.css' %}">
+    <div class="card">
+        <div class="close-btn"><a href= "{% url 'profiles:my-profile' %}" style="text-decoration:none; color:white;">✕</a></div>
+
+        <div class="icon-container">
+            <img id="previewImg" class="profile-img"
+        src="{% if profile.profile_picture %}
+                {{ profile.profile_picture.url }}
+            {% else %}
+                {% static 'default/user_img.png' %}
+            {% endif %}"
+        alt="Profile">
+
+        </div>
+
+        <h3>Click on delete for delete your profile</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Hidden field to indicate delete or not -->
+            <input type="hidden" id="delete_flag" name="delete_flag" value="0">
+
+            <!-- DELETE button (only frontend) -->
+            <button type="button" class="delete-btn" onclick="deleteImage()">Delete</button>
+
+            <div class="buttons-row">
+                <button type="submit" class="save-btn">Save</button>
+
+                <button type="button" class="save-btn" onclick="closePopup()">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+    function deleteImage() {
+        document.getElementById("previewImg").src = "{% static 'default/user_img.png' %}";
+        document.getElementById("delete_flag").value = "1";
+    }
+    function closePopup() {
+        window.parent.postMessage("closeProfilePopup", "*");
+    }
+
+    </script>
+
+    {% if closed %}
+    <script>
+        window.parent.postMessage("closeProfilePopup", "*");
+    </script>
+    {% endif %}
+{% endblock %}   

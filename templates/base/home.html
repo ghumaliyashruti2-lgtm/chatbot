@@ -1,0 +1,422 @@
+{% extends "base/base.html" %}
+  {% block content %}
+    {% load static %}
+
+     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <div class="continer">
+
+        <!-- ===== Header ===== -->
+        <header class="header">
+            <div class="logo">
+                <img src="{% static 'images/Elixire_logo.png' %}" alt="Logo">
+            </div>
+
+            <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#service">Services</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#career">Career</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Mobile Navbar -->
+            <div class="mobile-navbar mobile-only">
+                <a href="#" class="mobile-link">Home</a>
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#service" class="mobile-link">Services</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+            </div>
+
+
+        </header>
+
+        <!-- ===== Hero Section ===== -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="text">
+                    <h1>
+                        We provide<br>
+                        innovative <span>Solutions</span><br>
+                        for your business!
+                    </h1>
+
+                    <div class="buttons">
+                        <a href="#" class="btn primary">Get Started</a>
+                        <a href="#" class="btn secondary">Our Services</a>
+                    </div>
+                </div>
+
+                <div class="hero-img">
+                    <img src="{% static 'svg/intro-img.svg' %}" alt="People Illustration">
+                </div>
+            </div>
+        </section>
+
+        <div class="curve">
+            <img src="{% static 'svg/arch-divider.svg' %}" alt="">
+        </div>
+
+        <!-- ===== About Us ===== -->
+        <section class="about" id="about">
+            <h2 class="section-title">About Us</h2>
+
+            <div class="about-container">
+                <div class="about-text">
+                    <h3>Overview</h3>
+                    <p>
+                        With over 15 years of experience in managing the system and
+                        delivering robust scalable architecture to drive our clients
+                        through digital world.
+                    </p>
+                    <p>
+                        Elixir Techne has been in the business of dynamic and data-driven
+                        web development and services for the past five years. We believe that
+                        every web application should be designed for the future but built for today.
+                        This way we can reduce upfront cost and allow you to grow your business
+                        at your own pace.
+                    </p>
+                </div>
+
+                <div class="about-image">
+                    <img src="{% static 'svg/about-img.svg' %}" alt="">
+                </div>
+            </div>
+
+            <div class="about-help">
+                <div class="help-image">
+                    <img src="{% static 'svg/about-extra-1.svg' %}" alt="">
+                </div>
+
+                <div class="about-text">
+                    <h3>HOW CAN WE HELP YOU?</h3>
+                    <p>We can help you at all stages.From the concept to the launch of your
+                        product and services. Simply tell us your requirements, schedule and budget.
+                    </p>
+                    <p>
+                        We will provide you with a multi-release timeline that maps onto your
+                        stakeholders. This way you can choose the features you'd like, to see
+                        released in each release.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SERVICES -->
+        <section class="services-section" id="service">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">
+                Primarily focused on architecture, developing, securing & sustaining 
+                applications delivering software development & testing as a service
+            </p>
+
+            <div class="services-grid">
+
+                <!-- Example Card -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fa-solid fa-layer-group icon pink"></i>
+                        <span>Software Development</span>
+                    </div>
+                    <ul>
+                        <li>Custom Application Development</li>
+                        <li>Enterprise App Development</li>
+                        <li>Application Re-Engineering and Re-Factoring</li>
+                        <li>Software Sustenance</li>
+                        <li>SaaS Solutions Development</li>
+                        <li>Internet of Things (IoT)</li>
+                    </ul>
+                </div>
+
+                <!-- Add other cards same as original -->
+                <!-- Security / Web Development -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fa-regular fa-square-check icon green"></i>
+                        <span>Security / Web Development</span>
+                    </div>
+                    <ul>
+                        <li>Log Management Solutions</li>
+                        <li>SIEM Content Generation</li>
+                        <li>Vulnerability Signature Development</li>
+                        <li>Vulnerability Scanning & Penetration Testing</li>
+                        <li>Custom Web Application Development</li>
+                        <li>E-Commerce Application Development</li>
+                    </ul>
+                </div>
+
+                <!-- Software Quality Assurance -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fa-regular fa-file-lines icon teal"></i>
+                        <span>Software Quality Assurance</span>
+                    </div>
+                    <ul>
+                        <li>Designing test solutions</li>
+                        <li>Defining test strategies</li>
+                        <li>Test planning and implementation</li>
+                        <li>Automation testing</li>
+                        <li>Smoke, Functional, Regression testing</li>
+                        <li>Performance and Load testing</li>
+                        <li>System and Integration testing</li>
+                    </ul>
+                </div>
+
+                <!-- DevOps -->
+                <div class="service-card">
+                    <div class="service-title">
+                        <i class="fa-regular fa-circle icon purple"></i>
+                        <span>DevOps Services</span>
+                    </div>
+                    <ul>
+                        <li>Production environment setup</li>
+                        <li>Cloud services management</li>
+                        <li>CI/CD configuration</li>
+                        <li>Cloud Infrastructure Design</li>
+                        <li>Dockerize application deployment</li>
+                        <li>Kubernetes configuration</li>
+                        <li>Server maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE US -->
+        <section class="why-choose-us">
+            <h2>Why choose us?</h2>
+            <p class="subtitle">
+                Nothing speaks as loud as continuously executing at a high level. It shows we have a well-established process. 
+                It shows we can manage the account. It shows that we have the brain power to think through and effectively 
+                communicate the strategy. And, it shows that our architect and developers can compellingly translate strategy 
+                into a coherent.
+            </p>
+
+            <div class="cards">
+                <div class="card">
+                    <i class="fa fa-diamond"></i>
+                    <h3>TECHNOLOGY COMPETENCE</h3>
+                    <p>
+                        Our unique competence in various technologies enables us to deliver integrated, scalable, robust 
+                        solutions with the optimal cost/performance ratio.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-language"></i>
+                    <h3>COMMITMENT TO QUALITY</h3>
+                    <p>
+                        While retaining competitive rates we never compromise on the quality of our services. Our team monitors 
+                        project activities at all development phases and ensures defect prevention, project risk mitigation and 
+                        high quality results.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <i class="fa fa-object-group"></i>
+                    <h3>DELIVERING BUSINESS VALUE</h3>
+                    <p>
+                        Delivering exceptional business value to clients is the primary goal at Elixir Techne. We offer 
+                        technology solutions that add real value to business. Our success is measured by the success of our clients.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div><h1>50</h1><p>Clients</p></div>
+                <div><h1>100+</h1><p>Projects</p></div>
+                <div><h1>15K+</h1><p>Hours Of Support</p></div>
+                <div><h1>25</h1><p>Hard Workers</p></div>
+            </div>
+        </section>
+
+        <!-- EXPERTISE -->
+        <section class="expertise-section" id="expertise">
+            <h2 class="title">Our Expertise</h2>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <img src="{% static 'images/django1.png' %}" alt="Django">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/python.png' %}" alt="Python">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/fast-api.png' %}" alt="FastAPI">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/flask.png' %}" alt="Flask">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/aws.png' %}" alt="AWS">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'svg/salesforce.svg' %}" alt="Salesforce">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/reactjs.png' %}" alt="React">
+                </div>
+
+                <div class="expertise-card">
+                    <img src="{% static 'images/node.png' %}" alt="NodeJS">
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL -->
+        <section class="testimonial-section">
+
+            <h2 class="test-title">Testimonials</h2>
+
+            <div class="testimonial-box">
+                <div class="test-profile">
+                    <img src="{% static 'images/person.jpg' %}" alt="Client">
+                </div>
+
+                <div class="test-content">
+                    <h3 class="test-name">Jikku Abraham</h3>
+                    <p class="test-role">CEO, Taaraka Technologies</p>
+                    <p class="test-text">
+                        <i>Elixir Techne is by far the best extension of our development team we have ever had. 
+                        Our business model and products are very complicated – however, the Elixir Techne team 
+                        continues to amaze me on a daily basis with their extremely responsive, professional 
+                        behaviour, and ability to think outside of the box, which is what I look for in development 
+                        teams! Their skill to communicate clearly, execute with little or no direction, and 
+                        flexibility are some of their greatest strengths.</i>
+                    </p>
+                </div>
+            </div>
+
+             <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- CAREER -->
+        <section class="career-section" id="career">
+
+            <h2 class="career-title">Career</h2>
+
+            <p class="career-subtitle">
+                Carving your career path means finding an environment that continuously 
+                challenges you, yet also pushes you to grow.
+            </p>
+
+            <div class="career-container">
+
+                <div class="career-text">
+                    <h3 class="career-bold">'Skills' eat 'Degrees' for Breakfast here.</h3>
+
+                    <p>
+                        Innovation distinguishes between a leader and a follower. 
+                        We produce innovators. We work on the lesser strengths of new intakes, 
+                        and make them shine in their strengths. This gives rise to a sense 
+                        of achievement, which is symbiotic and prospering, both organizational 
+                        wise and individually.
+                    </p>
+                    <br>
+                    <p>
+                        We are looking to add young, talented and dynamic, both freshers 
+                        and experienced IT professionals into our hold and thereby build a team 
+                        of specialist Engineers who can further strengthen our endeavor in offering 
+                        various services in the IT sector.
+                    </p>
+
+                    <p class="career-email">
+                        Send your CV at 
+                        <a href="mailto:career@elixirtechne.com">career@elixirtechne.com</a> 
+                        and join us to become an integral part of Elixir Techne!
+                    </p>
+                </div>
+
+                <div class="career-image">
+                    <img src="{% static 'svg/about-extra-2.svg' %}" alt="Career Illustration">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLIENTS -->
+        <section class="clients-section">
+            <h2>Our Clients</h2>
+
+            <div class="scroll-wrapper">
+                <div class="clients-scroll">
+                    <img src="{% static 'images/image1.png' %}" class="client-logo" alt="Client Logo 1">
+                    <img src="{% static 'images/taaraka-2.png' %}" class="client-logo big" alt="Client Logo 2">
+                    <img src="{% static 'images/fast.png' %}"class="client-logo" alt="Client Logo 3">
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <h2>Contact Us</h2>
+
+            <div class="contact-container">
+
+                <!-- Left side – address -->
+                <div class="contact-left">
+                    <p><i class="fa fa-map-marker"></i>  
+                        405, Andhesh House, Opp. Gurudwara, S.G. Highway, Bodakdev, Ahmedabad, Gujarat - 380054
+                    </p>
+
+                    <p><i class="fa fa-map-marker"></i>
+                        812, Wings Business Bay, 150 Feet Ring Road, Umiya Circle, Nr. ITC Fortune Hotel, Rajkot, Gujarat - 360004
+                    </p>
+                </div>
+
+                <!-- Right side – email -->
+                <div class="contact-right">
+                    <p><i class="fa fa-envelope"></i>  
+                        hello@elixirtechne.com, 
+                    <br><i class="fa fa-envelope"></i> 
+                        jobs@elixirtechne.com
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <div class="footer-left">
+                © 2019 Elixire Techne. All Rights Reserved
+            </div>
+
+            <div class="footer-right">
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><img src="{% static 'svg/upwork.svg' %}"></a>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <!-- Floating Chat Button -->
+    <div class="help-btn" id="helpBtn">
+        <a href=" {% url 'chatbot' %}" ><i class="fas fa-comment-alt" style="color:white; margin-top: 15px;"></i></a>
+    </div>
+{% endblock %}
