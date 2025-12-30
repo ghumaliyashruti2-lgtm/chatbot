@@ -25,7 +25,7 @@
             <div class="profile-user">
 
                 <img class="profile-img"
-                    src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'images/user_img.png' %}{% endif %}"
+                    src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static '/default/user_img.png' %}{% endif %}"
                     alt="Profile">
 
                 <div>

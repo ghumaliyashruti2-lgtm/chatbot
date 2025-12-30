@@ -90,6 +90,8 @@
 
     <div class="history-body">
 
+        {% csrf_token %}
+        
         {% if history_groups %}
             {% for chat in history_groups %}
 

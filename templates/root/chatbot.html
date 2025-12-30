@@ -36,7 +36,10 @@
             {% if msg.role == "user" %}
                 <div class="chat-message user-message">
                     <div class="message user">
-                        {{ msg.content }}
+                        <div class="message-content">
+                            {{ msg.content }}
+                        </div>
+
                         <div class="message-actions">
                             <i class="fa fa-edit edit-btn"></i>
                             <i class="fa fa-copy copy-btn"></i>
@@ -46,7 +49,10 @@
             {% else %}
                 <div class="chat-message bot-message">
                     <div class="message bot">
-                        {{ msg.content|linebreaksbr }}
+                        <div class="message-content">
+                            {{ msg.content|linebreaksbr }}
+                        </div>
+
                         <div class="message-actions">
                             <i class="fa fa-copy copy-btn"></i>
                         </div>
@@ -54,6 +60,14 @@
                 </div>
             {% endif %}
         {% endfor %}
+
+        {% if limit_reached %}
+            <div class="chat-message system-message" id="limitMessage">
+                ⏳ Chat limit reached.
+                <span id="timeLeft"></span>
+            </div>
+        {% endif %}
+
 
         <div id="typingIndicator" class="message bot" style="display:none;">
             <span class="dot"></span>
@@ -81,6 +95,7 @@
                 id="userInput"
                 placeholder="Message"
                 autocomplete="off"
+                {% if limit_reached %}disabled{% endif %}
             >
 
             <!-- File input -->
@@ -89,7 +104,7 @@
                 id="fileInput"
                 hidden
                 accept="image/*,.pdf,.doc,.docx,.txt"
-                onchange="uploadFile()"
+                
             >
 
             <button type="button" class="icon-btn"
@@ -103,7 +118,9 @@
             </button>
 
             <!-- Send -->
-            <button type="submit" id="sendBtn" class="send-btn">
+            <button type="submit" id="sendBtn" class="send-btn" 
+    {% if limit_reached %}disabled style="opacity:.5;cursor:not-allowed"{% endif %}
+>
                 <i class="fas fa-paper-plane"></i>
             </button>
         </form>
@@ -111,5 +128,9 @@
 
 
 </div>
+<script>
+    window.REMAINING_SECONDS = {{ remaining_seconds|default:0 }};
+</script>
+
 {% endblock %}
 
